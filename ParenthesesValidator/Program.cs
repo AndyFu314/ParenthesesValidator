@@ -58,7 +58,7 @@ namespace ParenthesesValidator
                         result = true;
                     }else
                     {
-                        result = false;
+                        return false;
                     }
                 }
                 else
