@@ -254,5 +254,18 @@ namespace ParenthesesValidatorTest
             // assert
             Assert.IsFalse(result);
         }
+
+        [TestMethod]
+        public void TestMethod_ValidString_左左星右()
+        {
+            // arragne
+            var testSting = "((*)";
+
+            // act
+            var result = testSting.IsValidParentheses();
+
+            // assert
+            Assert.IsTrue(result);
+        }
     }
 }
