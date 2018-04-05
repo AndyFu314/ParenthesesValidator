@@ -10,11 +10,10 @@ namespace ParenthesesValidator
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Enter a parentheses string to validate:");
             var parenthesesString = Console.ReadLine();
 
-            var result = parenthesesString.IsValid();
-
-            if (result)
+            if (parenthesesString.IsValidParentheses())
             {
                 Console.WriteLine("The string is valid.");
             }
@@ -24,7 +23,6 @@ namespace ParenthesesValidator
             }
 
             Console.ReadKey();
-
         }
 
 
@@ -32,10 +30,10 @@ namespace ParenthesesValidator
 
     public static class StringExtension
     {
-        public static bool IsValid(this string sentence)
+        public static bool IsValidParentheses(this string sentence)
         {
             int wildcard = 0, counter = 0;
-            bool result = false;
+            bool result = true;
 
             foreach (var c in sentence)
             {
@@ -70,10 +68,20 @@ namespace ParenthesesValidator
             }
 
             // 檢查最後是否有足夠的星星可以和左括號成對
-            // 例如: "**))(((***"
-            if (counter > 0)
+            // 例如: "**))(((**", "(**)("
+            if (counter > 0 && result != false)
             {
-                if (wildcard >= counter)
+                int wildcardFromLast = 0;
+
+                foreach(var c in sentence.Reverse())
+                {
+                    if (c == '*')
+                        wildcardFromLast += 1;
+                    else
+                        break;
+                }
+
+                if (wildcardFromLast >= counter)
                     result = true;
                 else
                     result = false;

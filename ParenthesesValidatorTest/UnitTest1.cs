@@ -15,7 +15,7 @@ namespace ParenthesesValidatorTest
             var testSting = "(())";
 
             // act
-            var result = testSting.IsValid();
+            var result = testSting.IsValidParentheses();
 
             // assert
             Assert.IsTrue(result);
@@ -28,7 +28,7 @@ namespace ParenthesesValidatorTest
             var testSting = "))((";
 
             // act
-            var result = testSting.IsValid();
+            var result = testSting.IsValidParentheses();
 
             // assert
             Assert.IsFalse(result);
@@ -41,7 +41,7 @@ namespace ParenthesesValidatorTest
             var testSting = "(*)";
 
             // act
-            var result = testSting.IsValid();
+            var result = testSting.IsValidParentheses();
 
             // assert
             Assert.IsTrue(result);
@@ -54,7 +54,7 @@ namespace ParenthesesValidatorTest
             var testSting = "(**)";
 
             // act
-            var result = testSting.IsValid();
+            var result = testSting.IsValidParentheses();
 
             // assert
             Assert.IsTrue(result);
@@ -67,7 +67,7 @@ namespace ParenthesesValidatorTest
             var testSting = "*))";
 
             // act
-            var result = testSting.IsValid();
+            var result = testSting.IsValidParentheses();
 
             // assert
             Assert.IsFalse(result);
@@ -80,7 +80,7 @@ namespace ParenthesesValidatorTest
             var testSting = "**))(((***";
 
             // act
-            var result = testSting.IsValid();
+            var result = testSting.IsValidParentheses();
 
             // assert
             Assert.IsTrue(result);
@@ -93,7 +93,7 @@ namespace ParenthesesValidatorTest
             var testSting = "()))((";
 
             // act
-            var result = testSting.IsValid();
+            var result = testSting.IsValidParentheses();
 
             // assert
             Assert.IsFalse(result);
@@ -106,7 +106,7 @@ namespace ParenthesesValidatorTest
             var testSting = "**()))((**";
 
             // act
-            var result = testSting.IsValid();
+            var result = testSting.IsValidParentheses();
 
             // assert
             Assert.IsTrue(result);
@@ -119,7 +119,7 @@ namespace ParenthesesValidatorTest
             var testSting = "**))((**";
 
             // act
-            var result = testSting.IsValid();
+            var result = testSting.IsValidParentheses();
 
             // assert
             Assert.IsTrue(result);
@@ -132,7 +132,7 @@ namespace ParenthesesValidatorTest
             var testSting = "(*)(*)";
 
             // act
-            var result = testSting.IsValid();
+            var result = testSting.IsValidParentheses();
 
             // assert
             Assert.IsTrue(result);
@@ -145,7 +145,7 @@ namespace ParenthesesValidatorTest
             var testSting = "((*)(*))()";
 
             // act
-            var result = testSting.IsValid();
+            var result = testSting.IsValidParentheses();
 
             // assert
             Assert.IsTrue(result);
@@ -158,7 +158,7 @@ namespace ParenthesesValidatorTest
             var testSting = "**))(((**";
 
             // act
-            var result = testSting.IsValid();
+            var result = testSting.IsValidParentheses();
 
             // assert
             Assert.IsFalse(result);
@@ -171,7 +171,7 @@ namespace ParenthesesValidatorTest
             var testSting = "()**))";
 
             // act
-            var result = testSting.IsValid();
+            var result = testSting.IsValidParentheses();
 
             // assert
             Assert.IsTrue(result);
@@ -184,7 +184,7 @@ namespace ParenthesesValidatorTest
             var testSting = "()*))";
 
             // act
-            var result = testSting.IsValid();
+            var result = testSting.IsValidParentheses();
 
             // assert
             Assert.IsFalse(result);
@@ -197,10 +197,62 @@ namespace ParenthesesValidatorTest
             var testSting = "(()*))";
 
             // act
-            var result = testSting.IsValid();
+            var result = testSting.IsValidParentheses();
 
             // assert
             Assert.IsTrue(result);
+        }
+
+        [TestMethod]
+        public void TestMethod_ValidString_星星星星星()
+        {
+            // arragne
+            var testSting = "*****";
+
+            // act
+            var result = testSting.IsValidParentheses();
+
+            // assert
+            Assert.IsTrue(result);
+        }
+
+        [TestMethod]
+        public void TestMethod_InvalidString_左星星右左()
+        {
+            // arragne
+            var testSting = "(**)(";
+
+            // act
+            var result = testSting.IsValidParentheses();
+
+            // assert
+            Assert.IsFalse(result);
+        }
+
+        [TestMethod]
+        public void TestMethod_InvalidString_左左星右左星右星星右右左()
+        {
+            // arragne
+            var testSting = "((*)(*)**))(";
+
+            // act
+            var result = testSting.IsValidParentheses();
+
+            // assert
+            Assert.IsFalse(result);
+        }
+
+        [TestMethod]
+        public void TestMethod_InvalidString_左星星右右右右星左星()
+        {
+            // arragne
+            var testSting = "(**))))*(*";
+
+            // act
+            var result = testSting.IsValidParentheses();
+
+            // assert
+            Assert.IsFalse(result);
         }
     }
 }
