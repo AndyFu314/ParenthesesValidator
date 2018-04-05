@@ -11,18 +11,20 @@ namespace ParenthesesValidator
         static void Main(string[] args)
         {
             Console.WriteLine("Enter a parentheses string to validate:");
-            var parenthesesString = Console.ReadLine();
 
-            if (parenthesesString.IsValidParentheses())
+            while (true)
             {
-                Console.WriteLine("The string is valid.");
-            }
-            else
-            {
-                Console.WriteLine("The string is invalid.");
-            }
+                var parenthesesString = Console.ReadLine();
 
-            Console.ReadKey();
+                if (parenthesesString.IsValidParentheses())
+                {
+                    Console.WriteLine("The string is valid.");
+                }
+                else
+                {
+                    Console.WriteLine("The string is invalid.");
+                }
+            }
         }
 
 
